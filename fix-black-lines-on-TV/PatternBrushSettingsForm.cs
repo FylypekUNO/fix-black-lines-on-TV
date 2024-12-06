@@ -13,13 +13,13 @@ namespace fix_black_lines_on_TV
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int BrushOffset { get; private set; }
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int BrushAlpha { get; private set; }
+        public decimal Opacity { get; private set; }
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int ScreenIndex { get; private set; }
 
         public event EventHandler? SettingsApplied;
 
-        public PatternBrushSettingsForm(int currentHeight, int currentSize, int currentOffset, int currentAlpha, int currentScreen)
+        public PatternBrushSettingsForm(int currentHeight, int currentSize, int currentOffset, decimal currentOpacity, int currentScreen)
         {
             InitializeComponent();
 
@@ -34,7 +34,7 @@ namespace fix_black_lines_on_TV
             numericUpDownHeight.Value = currentHeight;
             numericUpDownSize.Value = currentSize;
             numericUpDownOffset.Value = currentOffset;
-            numericUpDownAlpha.Value = currentAlpha;
+            numericUpDownOpacity.Value = currentOpacity;
         }
 
         private void ApplySettings()
@@ -42,7 +42,7 @@ namespace fix_black_lines_on_TV
             BrushHeight = (int)numericUpDownHeight.Value;
             BrushSize = (int)numericUpDownSize.Value;
             BrushOffset = (int)numericUpDownOffset.Value;
-            BrushAlpha = (int)numericUpDownAlpha.Value;
+            Opacity = numericUpDownOpacity.Value;
             ScreenIndex = comboBoxScreen.SelectedIndex;
             SettingsApplied?.Invoke(this, EventArgs.Empty);
         }

@@ -6,7 +6,7 @@
         private NumericUpDown numericUpDownHeight;
         private NumericUpDown numericUpDownSize;
         private NumericUpDown numericUpDownOffset;
-        private NumericUpDown numericUpDownAlpha;
+        private NumericUpDown numericUpDownOpacity;
         private Button buttonOK;
         private Button buttonCancel;
         private Button buttonApply;
@@ -26,7 +26,7 @@
             this.numericUpDownHeight = new NumericUpDown();
             this.numericUpDownSize = new NumericUpDown();
             this.numericUpDownOffset = new NumericUpDown();
-            this.numericUpDownAlpha = new NumericUpDown();
+            this.numericUpDownOpacity = new NumericUpDown();
             this.buttonOK = new Button();
             this.buttonCancel = new Button();
             this.buttonApply = new Button();
@@ -34,7 +34,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOffset)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlpha)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOpacity)).BeginInit();
             this.SuspendLayout();
             // 
             // numericUpDownHeight
@@ -63,15 +63,17 @@
             this.numericUpDownOffset.Size = new Size(150, 30);
             this.numericUpDownOffset.TabIndex = 2;
             // 
-            // numericUpDownAlpha
+            // numericUpDownOpacity
             // 
-            this.numericUpDownAlpha.Location = new Point(20, 140);
-            this.numericUpDownAlpha.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
-            this.numericUpDownAlpha.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
-            this.numericUpDownAlpha.Value = new decimal(new int[] { 255, 0, 0, 0 });
-            this.numericUpDownAlpha.Name = "numericUpDownAlpha";
-            this.numericUpDownAlpha.Size = new Size(150, 30);
-            this.numericUpDownAlpha.TabIndex = 3;
+            this.numericUpDownOpacity.Location = new Point(20, 140);
+            this.numericUpDownOpacity.Maximum = new decimal(new int[] { 1, 0, 0, 0 });
+            this.numericUpDownOpacity.Minimum = new decimal(new int[] { 0, 0, 0, 0 });
+            this.numericUpDownOpacity.DecimalPlaces = 1;
+            this.numericUpDownOpacity.Increment = new decimal(new int[] { 1, 0, 0, 65536 }); // 0.1
+            this.numericUpDownOpacity.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            this.numericUpDownOpacity.Name = "numericUpDownOpacity";
+            this.numericUpDownOpacity.Size = new Size(150, 30);
+            this.numericUpDownOpacity.TabIndex = 3;
             // 
             // comboBoxScreen
             // 
@@ -118,7 +120,7 @@
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.buttonApply);
             this.Controls.Add(this.comboBoxScreen);
-            this.Controls.Add(this.numericUpDownAlpha);
+            this.Controls.Add(this.numericUpDownOpacity);
             this.Controls.Add(this.numericUpDownOffset);
             this.Controls.Add(this.numericUpDownSize);
             this.Controls.Add(this.numericUpDownHeight);
@@ -127,7 +129,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOffset)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAlpha)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOpacity)).EndInit();
             this.ResumeLayout(false);
         }
     }

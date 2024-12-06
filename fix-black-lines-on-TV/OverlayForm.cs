@@ -83,8 +83,8 @@ public partial class OverlayForm : Form
         this.FormBorderStyle = FormBorderStyle.None; // Remove window borders
         this.TopMost = true; // Keep the form on top
         this.WindowState = FormWindowState.Normal; // Set normal state
-        this.BackColor = Color.Lime; // Set a background color (used for transparency)
-        this.TransparencyKey = Color.Lime; // Make this color transparent
+        this.BackColor = Color.White; // Set a background color (used for transparency)
+        this.TransparencyKey = Color.White; // Make this color transparent
         this.AllowTransparency = true; // Enable transparency
 
         // Set the window styles to hide it and allow interaction
@@ -97,6 +97,7 @@ public partial class OverlayForm : Form
         const int WM_DISPLAYCHANGE = 0x007E;
 
         if (m.Msg == WM_DISPLAYCHANGE) OnDisplaySizeChange();
+        Console.WriteLine(m.Msg);
 
         base.WndProc(ref m);
     }
@@ -106,38 +107,28 @@ public partial class OverlayForm : Form
         var targetScreen = Screen.AllScreens[_targetScreenIndex];
         var screenBounds = targetScreen.Bounds;
 
-        var scaleX = (float)screenBounds.Width / this.Width;
-        var scaleY = (float)screenBounds.Height / this.Height;
-
         // Fullscreen
         this.Location = new Point(screenBounds.Left, screenBounds.Top);
         this.Size = new Size(screenBounds.Width, screenBounds.Height);
-
-        // Scale controls positions proportionally
-        foreach (Control control in this.Controls)
-        {
-            var controlCenterX = control.Left + control.Width / 2;
-            var controlCenterY = control.Top + control.Height / 2;
-
-            control.Left = (int)(controlCenterX * scaleX - control.Width / 2);
-            control.Top = (int)(controlCenterY * scaleY - control.Height / 2);
-        }
+        
+        this.Invalidate();
     }
     
     private int _brushHeight = 4;
     private int _brushSize = 1;
     private int _brushOffset = 1;
-    private int _brushAlpha = 255;
+    private decimal _opacity = 0.7m;
 
     private void OnOpenControlPanel()
     {
-        var settingsForm = new PatternBrushSettingsForm(_brushHeight, _brushSize, _brushOffset, _brushAlpha, _targetScreenIndex);
+        var settingsForm = new PatternBrushSettingsForm(_brushHeight, _brushSize, _brushOffset, _opacity, _targetScreenIndex);
         settingsForm.SettingsApplied += (sender, e) =>
         {
             _brushHeight = settingsForm.BrushHeight;
             _brushSize = settingsForm.BrushSize;
             _brushOffset = settingsForm.BrushOffset;
-            _brushAlpha = settingsForm.BrushAlpha;
+            _opacity = settingsForm.Opacity;
+            this.Opacity = (double)_opacity;
             
             if (_targetScreenIndex != settingsForm.ScreenIndex)
             {
@@ -156,7 +147,7 @@ public partial class OverlayForm : Form
         using (var g = Graphics.FromImage(pattern))
         {
             g.Clear(Color.Transparent);
-            using (var p = new Pen(Color.FromArgb(_brushAlpha, Color.Black), _brushSize))
+            using (var p = new Pen(Color.Black, _brushSize))
             {
                 g.DrawLine(p, 0, _brushOffset, _brushHeight - 1, _brushOffset);
             }
