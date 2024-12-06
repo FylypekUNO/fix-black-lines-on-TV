@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fix-black-lines-on-TV", "fix-black-lines-on-TV\fix-black-lines-on-TV.csproj", "{AF670B17-B454-47CF-A526-A4EC3469E9CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF670B17-B454-47CF-A526-A4EC3469E9CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF670B17-B454-47CF-A526-A4EC3469E9CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF670B17-B454-47CF-A526-A4EC3469E9CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF670B17-B454-47CF-A526-A4EC3469E9CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
