@@ -9,7 +9,7 @@ Just add more lines to the point where you can't recognize which part of the scr
 - Pattern height
 - Brush size
 - Pattern offset
-- Alpha channel (testing only, Windows doesn't like transparency, set to 1 to visualize how broken your screen is)
+- Opacity
 
 
 ### Todo: 
